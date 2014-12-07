@@ -27,7 +27,7 @@
   "scripts": {
     "start": "node app.js",
     "debug": "node debug app.js",
-    "test": "mocha test/unit"
+    "test": "mocha test/unit --recursive"
   },
   "main": "app.js",
   "repository": {
