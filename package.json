@@ -51,6 +51,7 @@
     "karma-safari-launcher": "^0.1.1",
     "mocha": "~2.0.1",
     "requirejs": "^2.1.15",
-    "sails-memory": "^0.10.3"
+    "sails-memory": "^0.10.3",
+    "supertest": "^0.15.0"
   }
 }
