@@ -34,7 +34,16 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
+  },
+  'post /user/login':{
+    controller: 'user',
+    action: 'passport_local'
+  },
+  'post /user/signup':{
+    controller: 'user',
+    action: 'signup'
   }
+
 
   /***************************************************************************
   *                                                                          *

@@ -1,8 +1,16 @@
 var Sails = require('sails');
 
+
 before(function(done) {
   Sails.lift({
-    // configuration for testing purposes
+    environment: 'test',
+    port: 1337,
+    log: {
+      level: 'error'
+    },
+    models: {
+      connection: 'memory',
+    }
   }, function(err, sails) {
     if (err) return done(err);
     // here you can load fixtures, etc.
