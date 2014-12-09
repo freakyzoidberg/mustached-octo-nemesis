@@ -12,9 +12,9 @@ module.exports = {
   signup: function(req, res) {
     User.create(req.params.all()).exec(function(err, user) {
       if (err) {
-        res.json(err);
+        res.badRequest(err);
       } else {
-        res.json(user);
+        res.ok(user);
       }
     });
   },
@@ -22,19 +22,19 @@ module.exports = {
   passport_local: function(req, res) {
     passport.authenticate('local', function(err, user, info) {
       if (err) {
-        res.json(500, err);
+        res.serverError(err);
         return;
       }
       if (!user) {
-        res.json(400, info);
+        res.badRequest(info);
         return;
       }
       req.logIn(user, function(err) {
         if (err) {
-          res.json(500, err);
+          res.serverError(err);
           return;
         }
-        res.json(200, user);
+        res.ok(user);
         return;
       });
     })(req, res);
@@ -42,7 +42,7 @@ module.exports = {
 
   logout: function(req, res) {
     req.logout();
-    res.json(200, {
+    res.ok({
       redirect: '/'
     })
   },
