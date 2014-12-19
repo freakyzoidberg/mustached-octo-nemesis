@@ -33,7 +33,6 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
   },
   'post /user/login':{
     controller: 'user',
