@@ -96,8 +96,8 @@
     <script src="/js/modules/login/login.js"></script>
     <script src="/js/services/loginService.js"></script>
     <!--SCRIPTS END-->
-    <% if (typeof newrelic !== 'undefined') { %>
-      <%- newrelic.getBrowserTimingHeader() %>
+    <% if (typeof global.newrelic !== 'undefined') { %>
+      <%- global.newrelic.getBrowserTimingHeader() %>
     <% } %>
   </body>
 </html>
