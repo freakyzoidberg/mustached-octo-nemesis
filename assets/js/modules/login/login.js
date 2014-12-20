@@ -33,7 +33,7 @@ angular
     $stateProvider
       .state('login', {
         url: '/login',
-        template: '<h1>Login</h1>',
+        template: JST['assets/js/modules/login/login.html'](),
         controller: 'LoginCtrl',
         controllerAs: 'login'
       });
