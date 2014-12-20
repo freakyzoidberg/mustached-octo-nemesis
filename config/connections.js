@@ -76,6 +76,15 @@ module.exports.connections = {
     // database: 'your_mongo_db_name_here'
   },
 
+  mongoOpenShift: {
+    adapter: 'sails-mongo',
+    host: '$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/',
+    port: 27017,
+    user: 'admin',
+    password: 'uBeki5FP_S4z',
+    database: 'nemesis'
+  }
+
   /***************************************************************************
   *                                                                          *
   * PostgreSQL is another officially supported relational database.          *
