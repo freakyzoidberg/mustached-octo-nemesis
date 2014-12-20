@@ -23,7 +23,9 @@
 process.chdir(__dirname);
 // Ensure a "sails" can be located:
 (function() {
-  var newrelic = require('newrelic');
+  if (process.env.NEW_RELIC_LICENSE_KEY != undefined) {
+    var newrelic = require('newrelic');
+  }
   var sails;
   try {
     sails = require('sails');
