@@ -31,7 +31,8 @@
   "scripts": {
     "start": "node app.js",
     "debug": "node debug app.js",
-    "test": "mocha test/unit --recursive"
+    "test": "mocha test/unit --recursive",
+    "postinstall": "bower install"
   },
   "main": "app.js",
   "repository": {
