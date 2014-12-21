@@ -33,6 +33,8 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
+    controller: 'front',
+    action: 'index'
   },
   'post /user/login':{
     controller: 'user',
