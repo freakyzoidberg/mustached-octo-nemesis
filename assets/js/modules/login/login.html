@@ -1,32 +1,32 @@
-<section class="m-t-lg wrapper-md animated fadeInDown">
+<section id="content" class="m-t-lg wrapper-md animated fadeInUp">
   <div class="row m-n">
     <div class="col-md-4 col-md-offset-4 m-t-lg">
       <section class="panel">
-        <header class="panel-heading bg bg-primary text-center">
-          Sign up
+        <header class="panel-heading text-center">
+          Sign in
         </header>
         <form action="" class="panel-body">
           <div class="form-group">
-            <label class="control-label">Display name</label>
-            <input type="text" placeholder="eg. Your name or company" class="form-control">
-          </div>
-          <div class="form-group">
-            <label class="control-label">Your email address</label>
+            <label class="control-label">Email</label>
             <input type="email" placeholder="test@example.com" class="form-control">
           </div>
           <div class="form-group">
-            <label class="control-label">Type a password</label>
+            <label class="control-label">Password</label>
             <input type="password" id="inputPassword" placeholder="Password" class="form-control">
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox"> Agree the <a href="#">terms and policy</a>
+              <input type="checkbox"> Keep me logged in
             </label>
           </div>
-          <button type="submit" class="btn btn-info">Sign up</button>
+          <a href="#" class="pull-right m-t-xs"><small>Forgot password?</small></a>
+          <button type="submit" class="btn btn-info">Sign in</button>
           <div class="line line-dashed"></div>
-          <p class="text-muted text-center"><small>Already have an account?</small></p>
-          <a class="btn btn-white btn-block">Sign in</a>
+          <a href="#" class="btn btn-facebook btn-block m-b-sm"><i class="fa fa-facebook pull-left"></i>Sign in with Facebook</a>
+          <a href="#" class="btn btn-twitter btn-block"><i class="fa fa-twitter pull-left"></i>Sign in with Twitter</a>
+          <div class="line line-dashed"></div>
+          <p class="text-muted text-center"><small>Do not have an account?</small></p>
+          <a href="#/signup" class="btn btn-white btn-block">Create an account</a>
         </form>
       </section>
     </div>

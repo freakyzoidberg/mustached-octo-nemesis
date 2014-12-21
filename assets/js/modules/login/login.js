@@ -2,7 +2,6 @@
 'use strict';
 
 var loginCtrl = function($state, LoginService, UserData) {
-  this.user = "Hello";
   this.userLogin = function() {
     var data = {
       name: this.name,
@@ -27,6 +26,11 @@ var loginCtrl = function($state, LoginService, UserData) {
   };
 };
 
+var signupCtrl = function($state, LoginService) {
+
+};
+
+
 angular
   .module('login', [])
   .config(['$stateProvider', function($stateProvider) {
@@ -36,13 +40,24 @@ angular
         template: JST['assets/js/modules/login/login.html'](),
         controller: 'LoginCtrl',
         controllerAs: 'login'
-      });
+      })
+      .state('signup', {
+        url: '/signup',
+        template: JST['assets/js/modules/login/signup.html'](),
+        controller: 'SignupCtrl',
+        controllerAs: 'signup'
+      })
   }])
   .controller('LoginCtrl', [
     '$state',
     'LoginService',
     'UserData',
     loginCtrl
+  ])
+  .controller('SignupCtrl', [
+    '$state',
+    'LoginService',
+    signupCtrl
   ]);
 
 })();

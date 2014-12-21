@@ -32,9 +32,8 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    controller: 'front',
-    action: 'index'
+  'get /$': {
+    view: 'index',
   },
   'post /user/login':{
     controller: 'user',
@@ -44,7 +43,6 @@ module.exports.routes = {
     controller: 'user',
     action: 'signup'
   }
-
 
   /***************************************************************************
   *                                                                          *
