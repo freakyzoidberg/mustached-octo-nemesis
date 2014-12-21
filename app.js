@@ -24,7 +24,12 @@ process.chdir(__dirname);
 // Ensure a "sails" can be located:
 (function() {
   var sails;
-  if (process.env.NEW_RELIC_LICENSE_KEY != undefined) {
+  if(process.env.NODETIME_ACCOUNT_KEY) {
+    require('nodetime').profile({
+      accountKey: process.env.NODETIME_ACCOUNT_KEY,
+    });
+  }
+  if (process.env.NEW_RELIC_LICENSE_KEY) {
     console.log('newrelic instrumentation');
     global.newrelic = require('newrelic');
   }
