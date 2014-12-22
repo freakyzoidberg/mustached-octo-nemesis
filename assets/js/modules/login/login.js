@@ -4,14 +4,14 @@
 var loginCtrl = function($state, LoginService, UserData) {
   this.userLogin = function() {
     var data = {
-      name: this.name,
+      email: this.email,
       password: this.password
     };
 
-    var ok = function() {
-      UserData.name = data.name;
-      console.log('login: accept');
-      //$state.go('dashboard');
+    var ok = function(data) {
+      UserData.email = data.email;
+      console.log('login: accept', data);
+      $state.go('dashboard');
     };
 
     var err = function() {
@@ -24,12 +24,27 @@ var loginCtrl = function($state, LoginService, UserData) {
 
     LoginService.login(data).then(ok, err, not);
   };
+  this.userSignup = function() {
+    var data = {
+      email: this.email,
+      password: this.password
+    };
+    var ok = function(data) {
+      console.log('signup: accept', data);
+      $state.go('login');
+    };
+
+    var err = function() {
+      console.log('signup: error');
+    };
+
+    var not = function() {
+      console.log('signup: notice');
+    };
+
+    LoginService.signup(data).then(ok, err, not);
+  };
 };
-
-var signupCtrl = function($state, LoginService) {
-
-};
-
 
 angular
   .module('login', [])
@@ -44,7 +59,7 @@ angular
       .state('signup', {
         url: '/signup',
         template: JST['assets/js/modules/login/signup.html'](),
-        controller: 'SignupCtrl',
+        controller: 'LoginCtrl',
         controllerAs: 'signup'
       })
   }])
@@ -53,11 +68,6 @@ angular
     'LoginService',
     'UserData',
     loginCtrl
-  ])
-  .controller('SignupCtrl', [
-    '$state',
-    'LoginService',
-    signupCtrl
   ]);
 
 })();

@@ -4,7 +4,7 @@
   angular
   .module('mustachedOctoNemesis')
   .constant('UserData', {
-    name: ''
+    email: ''
   });
 
 })();

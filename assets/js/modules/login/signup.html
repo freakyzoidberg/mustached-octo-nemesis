@@ -5,18 +5,14 @@
         <header class="panel-heading bg bg-primary text-center">
           Sign up
         </header>
-        <form action="" class="panel-body">
-          <div class="form-group">
-            <label class="control-label">Display name</label>
-            <input type="text" placeholder="eg. Your name or company" class="form-control">
-          </div>
+        <form ng-submit="signup.userSignup()" class="panel-body">
           <div class="form-group">
             <label class="control-label">Your email address</label>
-            <input type="email" placeholder="test@example.com" class="form-control">
+            <input type="email" placeholder="test@example.com" class="form-control" ng-model="signup.email">
           </div>
           <div class="form-group">
             <label class="control-label">Type a password</label>
-            <input type="password" id="inputPassword" placeholder="Password" class="form-control">
+            <input type="password" id="inputPassword" placeholder="Password" class="form-control" ng-model="signup.password">
           </div>
           <div class="checkbox">
             <label>

@@ -49,11 +49,11 @@ module.exports.policies = {
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
 
-  FrontController: {
-    '*' : true
-  },
   UserController : {
     '*' : true
+  },
+  BackendController : {
+    '*': 'sessionAuth'
   }
   // '*': 'sessionAuth',
   // '/': {

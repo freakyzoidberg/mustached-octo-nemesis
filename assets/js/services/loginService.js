@@ -3,12 +3,12 @@
 
 var loginService = function($q, $http) {
   this.login = function(data) {
-    var deferred = $q.defer();
-    setTimeout(function() {
-      console.log("resolve");
-      deferred.resolve();
-    }, 1000);
-    return deferred.promise;
+    var url = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+    return $http.post(url + '/user/login', data);
+  };
+  this.signup = function(data) {
+    var url = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+    return $http.post(url + '/user/signup', data);
   }
 };
 
