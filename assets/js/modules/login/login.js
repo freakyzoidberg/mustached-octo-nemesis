@@ -50,13 +50,13 @@ angular
   .module('login', [])
   .config(['$stateProvider', function($stateProvider) {
     $stateProvider
-      .state('login', {
+      .state('root.login', {
         url: '/login',
         template: JST['assets/js/modules/login/login.html'](),
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
-      .state('signup', {
+      .state('root.signup', {
         url: '/signup',
         template: JST['assets/js/modules/login/signup.html'](),
         controller: 'LoginCtrl',

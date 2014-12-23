@@ -34,7 +34,7 @@
     <!--STYLES END-->
   </head>
 
-  <body ng-app="mustachedOctoNemesis">
+  <body ng-app="mustachedOctoNemesis" ui-view>
     <%- body %>
     <% if (typeof global.newrelic !== 'undefined') { %>
     <%- global.newrelic.getBrowserTimingHeader() %>
