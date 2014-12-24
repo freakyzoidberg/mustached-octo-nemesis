@@ -7,3 +7,6 @@ build:
           name: ensure bindings
           code: npm rebuild bcrypt
       - npm-test
+deploy:
+    steps:
+        - heroku-deploy
