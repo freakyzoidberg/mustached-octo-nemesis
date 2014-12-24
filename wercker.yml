@@ -6,7 +6,4 @@ build:
       - script:
           name: ensure bindings
           code: npm rebuild bcrypt
-      - jshint:
-          use_strict: true
-          trailing_whitespace: false
       - npm-test
