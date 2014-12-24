@@ -18,7 +18,18 @@ module.exports = {
       type: 'string',
       required: true,
       minLength: 6
+    },
+    // Override toJSON instance method
+    toJSON: function() {
+      var obj = this.toObject();
+      delete obj.password;
+      return obj;
     }
+  },
+  validPassword: function(password, user, next) {
+    bcrypt.compare(password, user.password, function(err, match) {
+      return next(err, match);
+    })
   },
   beforeCreate: function(attrs, next) {
     bcrypt.genSalt(10, function(err, salt) {
@@ -31,5 +42,6 @@ module.exports = {
         next();
       });
     });
-  }
+  },
+
 };

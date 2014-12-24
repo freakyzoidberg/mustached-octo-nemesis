@@ -12,19 +12,19 @@ module.exports = {
     var password = req.param('password');
 
     if (!email || !password) {
-      return res.json(401, {err: 'username and password required'});
+      return res.forbidden({err: 'invalid username or password'});
     }
 
     User.findOne({
       email : email
     }).exec(function(err, user) {
       if (!user) {
-        return res.json(401, {err: 'invalid username or password'});
+        return res.forbidden({err: 'invalid username or password'});
       }
 
-      bcrypt.compare(password, user.password, function(err, match) {
+      User.validPassword(password, user, function(err, match) {
         if (err) {
-          return res.json(403, {err: 'forbidden'});
+          return res.forbidden(err);
         }
         if (match) {
           return res.ok({
@@ -32,7 +32,7 @@ module.exports = {
             token: sailsAuthToken.issueToken({sid: user.id})
             });
         } else {
-          return res.json(401, {err: 'invalid username or password'});
+          return res.forbidden({err: 'invalid username or password'});
         }
       });
     });

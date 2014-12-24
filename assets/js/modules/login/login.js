@@ -31,7 +31,7 @@ var loginCtrl = function($state, LoginService, UserData) {
     };
     var ok = function(data) {
       console.log('signup: accept', data);
-      $state.go('root.login');
+      $state.go('login');
     };
 
     var err = function() {
@@ -50,13 +50,13 @@ angular
   .module('login', [])
   .config(['$stateProvider', function($stateProvider) {
     $stateProvider
-      .state('root.login', {
+      .state('login', {
         url: '/login',
         template: JST['assets/js/modules/login/login.html'](),
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
-      .state('root.signup', {
+      .state('signup', {
         url: '/signup',
         template: JST['assets/js/modules/login/signup.html'](),
         controller: 'LoginCtrl',
