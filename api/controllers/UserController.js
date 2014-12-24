@@ -5,45 +5,48 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
-var passport = require('passport');
 module.exports = {
 
+  authenticate: function(req, res) {
+    var email = req.param('email');
+    var password = req.param('password');
 
-  signup: function(req, res) {
+    if (!email || !password) {
+      return res.json(401, {err: 'username and password required'});
+    }
+
+    User.findOne({
+      email : email
+    }).exec(function(err, user) {
+      if (!user) {
+        return res.json(401, {err: 'invalid username or password'});
+      }
+
+      bcrypt.compare(password, user.password, function(err, match) {
+        if (err) {
+          return res.json(403, {err: 'forbidden'});
+        }
+        if (match) {
+          return res.ok({
+            user: user,
+            token: sailsAuthToken.issueToken({sid: user.id})
+            });
+        } else {
+          return res.json(401, {err: 'invalid username or password'});
+        }
+      });
+    });
+  },
+
+  register: function(req, res) {
+    //TODO: Do some validation on the input
+
     User.create(req.params.all()).exec(function(err, user) {
       if (err) {
         res.badRequest(err);
       } else {
-        res.ok(user);
+        res.ok({user: user, token: sailsAuthToken.issueToken({sid: user.id})})
       }
     });
-  },
-
-  passport_local: function(req, res) {
-    passport.authenticate('local', function(err, user, info) {
-      if (err) {
-        res.serverError(err);
-        return;
-      }
-      if (!user) {
-        res.badRequest(info);
-        return;
-      }
-      req.logIn(user, function(err) {
-        if (err) {
-          res.serverError(err);
-          return;
-        }
-        res.ok(user);
-        return;
-      });
-    })(req, res);
-  },
-
-  logout: function(req, res) {
-    req.logout();
-    res.ok({
-      redirect: '/'
-    })
-  },
+  }
 };

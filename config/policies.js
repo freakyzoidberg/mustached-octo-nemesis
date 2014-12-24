@@ -53,7 +53,7 @@ module.exports.policies = {
     '*' : true
   },
   BackendController : {
-    '*': 'sessionAuth'
+    '*': 'authToken'
   }
   // '*': 'sessionAuth',
   // '/': {

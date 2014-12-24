@@ -41,11 +41,11 @@ module.exports.routes = {
   },
   'post /user/login':{
     controller: 'user',
-    action: 'passport_local'
+    action: 'authenticate'
   },
   'post /user/signup':{
     controller: 'user',
-    action: 'signup'
+    action: 'register'
   }
 
   /***************************************************************************

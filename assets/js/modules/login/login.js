@@ -31,7 +31,7 @@ var loginCtrl = function($state, LoginService, UserData) {
     };
     var ok = function(data) {
       console.log('signup: accept', data);
-      $state.go('login');
+      $state.go('root.login');
     };
 
     var err = function() {
