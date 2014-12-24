@@ -6,6 +6,7 @@ angular
     'ui.router',
     'login',
     'front',
+    'dashboard'
   ])
   .config(['$urlRouterProvider', function($urlRouterProvider) {
     $urlRouterProvider.otherwise('/');

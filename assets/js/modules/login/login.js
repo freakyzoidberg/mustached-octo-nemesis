@@ -11,7 +11,7 @@ var loginCtrl = function($state, LoginService, UserData) {
     var ok = function(data) {
       UserData.email = data.email;
       console.log('login: accept', data);
-      $state.go('dashboard');
+      $state.go('root.dashboard');
     };
 
     var err = function() {
