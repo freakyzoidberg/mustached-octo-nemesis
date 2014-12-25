@@ -12,7 +12,8 @@
       url: '/',
       template: JST['assets/js/modules/front/front.html'](),
       controller: 'FrontCtrl',
-      controllerAs: 'front'
+      controllerAs: 'front',
+      authenticate: false
     });
   }])
   .controller('FrontCtrl', [

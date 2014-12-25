@@ -1,20 +1,21 @@
 (function(){
 'use strict';
 
-var loginCtrl = function($state, LoginService, UserData) {
+var loginCtrl = function($state, LoginService, User) {
   this.userLogin = function() {
     var data = {
       email: this.email,
       password: this.password
     };
 
-    var ok = function(data) {
-      UserData.email = data.email;
-      console.log('login: accept', data);
+    var ok = function(resp) {
+      User.setUser(resp.data.user);
+      User.setToken(resp.data.token);
       $state.go('root.dashboard');
     };
 
-    var err = function() {
+    var err = function(err) {
+      toastr.error('Login error', 'Invalid login or password')
       console.log('login: error');
     };
 
@@ -54,19 +55,21 @@ angular
         url: '/login',
         template: JST['assets/js/modules/login/login.html'](),
         controller: 'LoginCtrl',
-        controllerAs: 'login'
+        controllerAs: 'login',
+        authenticate: false
       })
       .state('signup', {
         url: '/signup',
         template: JST['assets/js/modules/login/signup.html'](),
         controller: 'LoginCtrl',
-        controllerAs: 'signup'
+        controllerAs: 'signup',
+        authenticate: false
       })
   }])
   .controller('LoginCtrl', [
     '$state',
     'LoginService',
-    'UserData',
+    'User',
     loginCtrl
   ]);
 

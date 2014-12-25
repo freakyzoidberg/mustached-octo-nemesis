@@ -7,24 +7,28 @@
 
 module.exports = {
 
+  me: function(req, res) {
+    return res.json({});
+  },
+
   authenticate: function(req, res) {
     var email = req.param('email');
     var password = req.param('password');
 
     if (!email || !password) {
-      return res.forbidden({err: 'invalid username or password'});
+      return res.notAcceptable({err: 'invalid username or password'});
     }
 
     User.findOne({
       email : email
     }).exec(function(err, user) {
       if (!user) {
-        return res.forbidden({err: 'invalid username or password'});
+        return res.notAcceptable({err: 'invalid username or password'});
       }
 
       User.validPassword(password, user, function(err, match) {
         if (err) {
-          return res.forbidden(err);
+          return res.notAcceptable(err);
         }
         if (match) {
           return res.ok({
@@ -32,7 +36,7 @@ module.exports = {
             token: sailsAuthToken.issueToken({sid: user.id})
             });
         } else {
-          return res.forbidden({err: 'invalid username or password'});
+          return res.notAcceptable({err: 'invalid username or password'});
         }
       });
     });
@@ -43,7 +47,7 @@ module.exports = {
 
     User.create(req.params.all()).exec(function(err, user) {
       if (err) {
-        res.badRequest(err);
+        res.notAcceptable(err);
       } else {
         res.ok({user: user, token: sailsAuthToken.issueToken({sid: user.id})})
       }

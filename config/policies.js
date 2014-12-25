@@ -50,7 +50,8 @@ module.exports.policies = {
 	// }
 
   UserController : {
-    '*' : true
+    '*' : true,
+    'me' : 'authToken'
   },
   BackendController : {
     '*': 'authToken'

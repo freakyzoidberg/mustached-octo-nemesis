@@ -39,11 +39,15 @@ module.exports.routes = {
     controller : 'backend',
     action: 'find'
   },
-  'post /user/login':{
+  'GET /me' : {
+    controller : 'user',
+    action: 'me'
+  },
+  'POST /user/login':{
     controller: 'user',
     action: 'authenticate'
   },
-  'post /user/signup':{
+  'POST /user/signup':{
     controller: 'user',
     action: 'register'
   }

@@ -1,7 +1,8 @@
 (function(){
   'use strict';
 
-  var dashboardCtrl = function($state) {
+  var dashboardCtrl = function($state, User) {
+    this.userData = User.currentUser();
   };
 
   angular
@@ -12,11 +13,13 @@
       url: '/dashboard',
       template: JST['assets/js/modules/dashboard/dashboard.html'](),
       controller: 'DashboardCtrl',
-      controllerAs: 'dashboard'
+      controllerAs: 'dashboard',
+      authenticate: true
     });
   }])
   .controller('DashboardCtrl', [
   '$state',
+  'User',
   dashboardCtrl
   ]);
 

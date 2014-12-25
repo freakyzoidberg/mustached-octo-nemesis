@@ -1,14 +1,14 @@
 (function(){
 'use strict';
 
-var loginService = function($q, $http) {
+var loginService = function($q, $http, ApiInfo) {
+
   this.login = function(data) {
-    var url = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-    return $http.post(url + '/user/login', data);
+    return $http.post(ApiInfo.url + '/user/login', data);
   };
   this.signup = function(data) {
     var url = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-    return $http.post(url + '/user/signup', data);
+    return $http.post(ApiInfo.url + '/user/signup', data);
   }
 };
 
@@ -17,6 +17,7 @@ angular
   .service('LoginService', [
     '$q',
     '$http',
+    'ApiInfo',
     loginService
   ]);
 
