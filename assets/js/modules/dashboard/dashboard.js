@@ -1,8 +1,8 @@
 (function(){
   'use strict';
 
-  var dashboardCtrl = function($state, User) {
-    this.userData = User.currentUser();
+  var dashboardCtrl = function($state) {
+
   };
 
   angular
@@ -19,7 +19,6 @@
   }])
   .controller('DashboardCtrl', [
   '$state',
-  'User',
   dashboardCtrl
   ]);
 

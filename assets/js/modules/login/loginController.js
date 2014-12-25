@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 
-var loginCtrl = function($state, LoginService, User) {
+var loginController = function($state, LoginService, UserFactory) {
   this.userLogin = function() {
     var data = {
       email: this.email,
@@ -9,8 +9,8 @@ var loginCtrl = function($state, LoginService, User) {
     };
 
     var ok = function(resp) {
-      User.setUser(resp.data.user);
-      User.setToken(resp.data.token);
+      UserFactory.setUser(resp.data.user);
+      UserFactory.setToken(resp.data.token);
       $state.go('root.dashboard');
     };
 
@@ -54,23 +54,23 @@ angular
       .state('login', {
         url: '/login',
         template: JST['assets/js/modules/login/login.html'](),
-        controller: 'LoginCtrl',
+        controller: 'LoginController',
         controllerAs: 'login',
         authenticate: false
       })
       .state('signup', {
         url: '/signup',
         template: JST['assets/js/modules/login/signup.html'](),
-        controller: 'LoginCtrl',
+        controller: 'LoginController',
         controllerAs: 'signup',
         authenticate: false
       })
   }])
-  .controller('LoginCtrl', [
+  .controller('LoginController', [
     '$state',
     'LoginService',
-    'User',
-    loginCtrl
+    'UserFactory',
+    loginController
   ]);
 
 })();

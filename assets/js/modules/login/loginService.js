@@ -7,8 +7,10 @@ var loginService = function($q, $http, ApiInfo) {
     return $http.post(ApiInfo.url + '/user/login', data);
   };
   this.signup = function(data) {
-    var url = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
     return $http.post(ApiInfo.url + '/user/signup', data);
+  }
+  this.me = function() {
+    return $http.get(ApiInfo.url + '/user/me');
   }
 };
 

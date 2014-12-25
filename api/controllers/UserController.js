@@ -8,7 +8,16 @@
 module.exports = {
 
   me: function(req, res) {
-    return res.json({});
+    User.findOne({
+      id : req.token.sid
+    }).exec(function(err, user) {
+      if (!user) {
+        return res.notAcceptable({err: 'User does not exists'});
+      }
+      return res.ok({
+        user: user
+      });
+    });
   },
 
   authenticate: function(req, res) {

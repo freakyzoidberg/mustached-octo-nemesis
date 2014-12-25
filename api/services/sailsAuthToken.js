@@ -12,7 +12,7 @@ module.exports.verifyToken = function(token, verified) {
   return jwt.verify(
     token,
     process.env.TOKEN_SECRET || sails.config.session.secret,
-  {},
-  verified
-);
+    {},
+    verified
+  );
 };

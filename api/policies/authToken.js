@@ -30,7 +30,7 @@ module.exports = function(req, res, next) {
     return res.json(401, {err: 'No Authorization header was found'});
   }
 
-  sailsTokenAuth.verifyToken(token, function(err, token) {
+  sailsAuthToken.verifyToken(token, function(err, token) {
     if (err) return res.json(401, {err: 'The token is not valid'});
 
     req.token = token;
