@@ -17,8 +17,11 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/e2e/**/*.spec.js',
-      'assets/js/**/*.js'
+        '.tmp/public/js/dependencies/angular.js',
+        '.tmp/public/**/*.js',
+        'node_modules/chai/chai.js',
+        'node_modules/angular-mocks/angular-mocks.js',
+        'test/client/**/*.spec.js',
     ],
 
 
@@ -58,12 +61,12 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
   });
 };
