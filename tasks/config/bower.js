@@ -3,7 +3,8 @@ module.exports = function(grunt) {
     dev: {
       dest: '.tmp/public',
       js_dest: '.tmp/public/js/dependencies/',
-      css_dest: '.tmp/public/styles'
+      css_dest: '.tmp/public/styles',
+      fonts_dest: '.tmp/public/styles'
     }
   });
 
