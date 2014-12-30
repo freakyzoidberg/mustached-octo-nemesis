@@ -12,6 +12,11 @@
 module.exports = function(grunt) {
 
 	grunt.config.set('clean', {
+		preprod: [ 	".tmp/public/concat",
+							 	".tmp/public/js",
+								".tmp/public/templates",
+								".tmp/public/styles"
+							],
 		dev: ['.tmp/public/**'],
 		build: ['www']
 	});

@@ -1,29 +1,29 @@
-var should = require('chai').should()
+var should = require('chai').should();
 
 describe('UsersModel', function() {
 
   describe('#find()', function() {
     it('should check find function', function(done) {
       User.find()
-        .then(function(results) {
-          // some tests
-          done();
-        })
-        .catch(done);
+      .then(function(results) {
+        // some tests
+        done();
+      })
+      .catch(done);
     });
   });
 
   describe('Password', function() {
     it('password at least 6 char long', function(done) {
       User.create({
-          "email": "test@test.com",
-          "password": "12345"
-        })
-        .exec(function(err, user) {
-          should.exist(err);
-          "minLength".should.equal(err.invalidAttributes.password[0].rule);
-          done();
-        })
+        "email": "test@test.com",
+        "password": "12345"
+      })
+      .exec(function(err, user) {
+        should.exist(err);
+        "minLength".should.equal(err.invalidAttributes.password[0].rule);
+        done();
+      })
     });
     it('password is hashed', function(done) {
       User.create({

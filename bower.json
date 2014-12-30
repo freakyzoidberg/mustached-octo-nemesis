@@ -19,6 +19,7 @@
     "underscore": "~1.7.0",
     "toastr": "~2.1.0",
     "angular-local-storage": "~0.1.5",
-    "angular-gravatar": "~0.2.4"
+    "angular-gravatar": "~0.2.4",
+    "fontawesome": "~4.2.0"
   }
 }

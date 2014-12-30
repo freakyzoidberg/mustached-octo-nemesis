@@ -16,11 +16,19 @@
 module.exports = function(grunt) {
 
 	grunt.config.set('copy', {
+		preprod : {
+			files: [{
+				expand: true,
+				cwd: './.tmp/public/styles',
+				src: ['fonts/**'],
+				dest: '.tmp/public'
+			}]
+		},
 		dev: {
 			files: [{
 				expand: true,
 				cwd: './assets',
-				src: ['**/*.!(coffee|less)'],
+				src: ['**/*', '!**/*.less', '!**/*.coffee'],
 				dest: '.tmp/public'
 			}]
 		},
