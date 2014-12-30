@@ -8,7 +8,9 @@
 module.exports = {
 
   attributes: {
-
+    host: {
+      type: 'string',
+      required: true
+    },
   }
 };
-

@@ -35,10 +35,8 @@ module.exports.routes = {
   'get /$': {
     view: 'index',
   },
-  'GET /backend' : {
-    controller : 'backend',
-    action: 'find'
-  },
+
+
   'GET /me' : {
     controller : 'user',
     action: 'me'
@@ -50,7 +48,24 @@ module.exports.routes = {
   'POST /user/signup':{
     controller: 'user',
     action: 'register'
-  }
+  },
+
+
+  'GET /backend' : {
+    controller : 'backend',
+    action: 'findAll'
+  },
+
+
+
+
+
+
+
+
+
+
+
 
   /***************************************************************************
   *                                                                          *

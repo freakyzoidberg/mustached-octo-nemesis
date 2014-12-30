@@ -8,6 +8,7 @@ angular
     'LocalStorageModule',
     'login',
     'front',
+    'backends',
     'dashboard'
   ])
   .factory('AuthInterceptor', ['$q', '$injector', function($q, $injector) {
