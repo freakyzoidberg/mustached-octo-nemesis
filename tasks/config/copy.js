@@ -15,32 +15,32 @@
  */
 module.exports = function(grunt) {
 
-	grunt.config.set('copy', {
-		preprod : {
-			files: [{
-				expand: true,
-				cwd: './.tmp/public/styles',
-				src: ['fonts/**'],
-				dest: '.tmp/public'
-			}]
-		},
-		dev: {
-			files: [{
-				expand: true,
-				cwd: './assets',
-				src: ['**/*', '!**/*.less', '!**/*.coffee'],
-				dest: '.tmp/public'
-			}]
-		},
-		build: {
-			files: [{
-				expand: true,
-				cwd: '.tmp/public',
-				src: ['**/*'],
-				dest: 'www'
-			}]
-		}
-	});
+  grunt.config.set('copy', {
+    preprod : {
+      files: [{
+        expand: true,
+        cwd: './.tmp/public/styles',
+        src: ['fonts/**'],
+        dest: '.tmp/public'
+      }]
+    },
+    dev: {
+      files: [{
+        expand: true,
+        cwd: './assets',
+        src: ['**/*', '!**/*.less', '!**/*.coffee'],
+        dest: '.tmp/public'
+      }]
+    },
+    build: {
+      files: [{
+        expand: true,
+        cwd: '.tmp/public',
+        src: ['**/*'],
+        dest: 'www'
+      }]
+    }
+  });
 
-	grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 };
