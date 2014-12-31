@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-	findAll : function(req, res) {
+findAll : function(req, res) {
 		Backend.find().exec(function(err, backends) {
 			if (!backends) {
 				return res.notAcceptable({err: 'User does not exists'});
