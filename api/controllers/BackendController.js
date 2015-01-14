@@ -15,5 +15,16 @@ findAll : function(req, res) {
         backends: backends
       });
     });
+  },
+create : function(req, res) {
+  Backend.create(req.params.all()).exec(function(err, backend) {
+    if (err) {
+      res.notAcceptable(err);
+    } else {
+      res.ok({
+        backend: backend
+      });
+    }
+  });
   }
 };

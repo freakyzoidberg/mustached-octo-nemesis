@@ -9,6 +9,11 @@
         <div class="text-center clearfix">
           <a href="#/backends/create" class="btn btn-success m-b-lg"><i class="fa fa-plus"></i> Create backend</a>
         </div>
+        <ul>
+        <li ng-repeat="backend in backends.backends">
+          <span>{{backend.host}}</span>
+        </li>
+        </ul>
       </section>
     </section>
   </aside>
@@ -16,67 +21,6 @@
   <!-- .aside -->
   <aside class="">
     <section class="vbox" ui-view>
-      <header class="header bg-white pos-rlt navbar navbar-default show">
-        <span class="arrow left"></span>
-        <div class="collapse navbar-collapse pull-in">
-          <ul class="nav navbar-nav">
-            <li><a href="#">Tasks</a></li>
-            <li class="font-bold"><a href="#l">Stream</a></li>
-            <li><a href="#l">Team</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Files <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Documents</a></li>
-                <li><a href="#">Media</a></li>
-                <li><a href="#">Upload one</a></li>
-              </ul>
-            </li>
-            <li><a href="#l">About</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="hidden-xs">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-bell-o"></i>
-                <span class="badge up bg-success m-l-n-sm">2</span>
-              </a>
-              <section class="dropdown-menu animated fadeInUp input-s-lg">
-                <section class="panel bg-white">
-                  <header class="panel-heading">
-                    <strong>You have <span class="count-n">2</span> notifications</strong>
-                  </header>
-                  <div class="list-group">
-                    <a href="#" class="media list-group-item">
-                      <span class="pull-left thumb-sm">
-                        <img src="images/avatar.jpg" alt="John said" class="img-circle">
-                      </span>
-                      <span class="media-body block m-b-none">
-                        Use awesome animate.css<br>
-                        <small class="text-muted">28 Aug 13</small>
-                      </span>
-                    </a>
-                    <a href="#" class="media list-group-item">
-                      <span class="media-body block m-b-none">
-                        1.0 initial released<br>
-                        <small class="text-muted">27 Aug 13</small>
-                      </span>
-                    </a>
-                  </div>
-                  <footer class="panel-footer text-sm">
-                    <a href="#" class="pull-right"><i class="fa fa-cog"></i></a>
-                    <a href="#">See all the notifications</a>
-                  </footer>
-                </section>
-              </section>
-            </li>
-          </ul>
-        </div>
-      </header>
-      <section>
-        <section class="hbox stretch">
-          <aside>
-          </aside>
-        </section>
-      </section>
     </section>
   </aside>
   <!-- /.aside -->

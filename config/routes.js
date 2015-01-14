@@ -55,7 +55,10 @@ module.exports.routes = {
     controller : 'backend',
     action: 'findAll'
   },
-
+  'POST /backend' : {
+    controller : 'backend',
+    action: 'create'
+  },
 
 
 
