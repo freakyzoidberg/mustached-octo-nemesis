@@ -6,9 +6,12 @@
  */
 
 module.exports = {
-  findAll : function(req, res) {
-    Backend.find({ user : req.token.sid }).exec(function(err, backends) {
-      if (!backends) {
+  _config: { actions: false, rest: true, shortcuts: false },
+  find : function(req, res) {
+    Backend.find()
+    .where({ user: req.token.sid })
+    .exec(function(err, backends) {
+      if (err) {
         return res.notAcceptable({err: 'Backend does not exists'});
       }
       return res.ok({
@@ -18,10 +21,10 @@ module.exports = {
   },
   findOne : function(req, res) {
     Backend.findOne()
-    .where({ user : req.token.sid})
-    .where({ id : req.param('id')})
+    .where({ user: req.token.sid})
+    .where({ id: req.param('id')})
     .exec(function(err, backend) {
-      if (!backend) {
+      if (err) {
         return res.notAcceptable({err: 'Backend does not exists'});
       }
       return res.ok({
@@ -31,15 +34,15 @@ module.exports = {
   },
   update : function(req, res) {
     Backend.findOne()
-    .where({ user : req.token.sid})
-    .where({ id : req.param('id')})
+    .where({ user: req.token.sid})
+    .where({ id: req.param('id')})
     .exec(function(err, backend) {
-      if (!backend) {
+      if (err) {
         return res.notAcceptable({err: 'Backend does not exists' + req.id});
       }
       backend.host = req.param('host');
       backend.save(function(err, backend) {
-        if (!backend) {
+        if (err) {
           return res.notAcceptable({err: 'Backend not updated'});
         }
         return res.ok({

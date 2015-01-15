@@ -4,16 +4,16 @@
   var backendsCtrl = function($state, BackendsService) {
     var that = this;
     var ok = function(resp) {
-      console.log('backends getAll: ok', resp.data);
+      console.debug('backends getAll: ok', resp.data);
       that.backends = resp.data.backends;
     };
 
     var err = function() {
-      console.log('backends getAll: error');
+      console.debug('backends getAll: error');
     };
 
     var not = function() {
-      console.log('backends getAll: notice');
+      console.debug('backends getAll: notice');
     };
 
     var getBackends = function() {
@@ -27,19 +27,18 @@
 
   var backendsFormCtrl = function($state, $stateParams, BackendsService) {
     var that = this;
-    console.log($stateParams.id);
     if ($stateParams.id) {
       var ok = function(resp) {
-        console.log('backends getOne: ok', resp.data);
-        that.data = resp.data;
+        console.debug('backends getOne: ok', resp.data.backend);
+        that.data = resp.data.backend;
       };
 
       var err = function() {
-        console.log('backends getOne: error');
+        console.debug('backends getOne: error');
       };
 
       var not = function() {
-        console.log('backends getOne: notice');
+        console.debug('backends getOne: notice');
       };
       BackendsService.get($stateParams.id).then(ok, err, not);
     }
@@ -47,18 +46,18 @@
 
     this.save = function() {
       var ok = function(data) {
-        console.log('backends form: ok', data);
+        console.debug('backends form: ok', data);
         BackendsService.notifyObservers();
         if (!$stateParams.id)
           that.data = null;
       };
 
       var err = function() {
-        console.log('backends form: error');
+        console.debug('backends form: error');
       };
 
       var not = function() {
-        console.log('backends form: notice');
+        console.debug('backends form: notice');
       };
       if ($stateParams.id) {
         BackendsService.update(that.data).then(ok, err, not);

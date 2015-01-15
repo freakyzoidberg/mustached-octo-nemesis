@@ -1,7 +1,10 @@
 (function(){
   'use strict';
 
-  var frontCtrl = function($state) {
+  var frontCtrl = function($state, $rootScope) {
+    $rootScope.$on("logged-in", function() {
+      $state.transitionTo("root.dashboard");
+    });
   };
 
   angular
@@ -18,6 +21,7 @@
   }])
   .controller('FrontCtrl', [
   '$state',
+  '$rootScope',
   frontCtrl
   ]);
 

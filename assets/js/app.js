@@ -55,18 +55,23 @@ angular
     function ($rootScope, $state, $http, UserFactory, LoginService) {
       $rootScope.userData = UserFactory.currentUser();
       $rootScope.$on("$stateChangeStart", function(e, toState, toParams, fromState, fromParams) {
-        if (toState.authenticate && UserFactory.currentUser().id == null) {
+        if (UserFactory.currentUser().id == null) {
           if (UserFactory.currentToken()) {
             console.debug("we have a token we could attempt to fill the user here");
             LoginService.me().then(function(resp) {
               UserFactory.setUser(resp.data.user);
+              $rootScope.$broadcast("logged-in");
             }, function() {
+              if (toState.authenticate) {
+                $state.transitionTo("login");
+                e.preventDefault();
+              }
+            });
+          } else {
+            if (toState.authenticate) {
               $state.transitionTo("login");
               e.preventDefault();
-            })
-          } else {
-            $state.transitionTo("login");
-            e.preventDefault();
+            }
           }
         }
       });

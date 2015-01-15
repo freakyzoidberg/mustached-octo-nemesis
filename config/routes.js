@@ -37,7 +37,7 @@ module.exports.routes = {
   },
 
 
-  'GET /me' : {
+  'GET /user/me$' : {
     controller : 'user',
     action: 'me'
   },
@@ -49,25 +49,6 @@ module.exports.routes = {
     controller: 'user',
     action: 'register'
   },
-
-
-  'GET /backend$' : {
-    controller : 'backend',
-    action: 'findAll'
-  },
-  'GET /backend/:id$' : {
-    controller : 'backend',
-    action: 'find'
-  },
-  'PUT /backend/:id$' : {
-    controller : 'backend',
-    action: 'update'
-  },
-  'POST /backend$' : {
-    controller : 'backend',
-    action: 'create'
-  },
-
 
 
 

@@ -6,7 +6,7 @@
 */
 
 module.exports = {
-
+  schema: true,
   attributes: {
     host: {
       type: 'string',
@@ -14,6 +14,7 @@ module.exports = {
     },
     user:{
       model:'User'
-    }
-  }
+    },
+  },
+
 };

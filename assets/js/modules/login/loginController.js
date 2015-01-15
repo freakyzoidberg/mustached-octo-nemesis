@@ -16,11 +16,11 @@ var loginController = function($state, LoginService, UserFactory) {
 
     var err = function(err) {
       toastr.error('Login error', 'Invalid login or password')
-      console.log('login: error');
+      console.debug('login: error');
     };
 
     var not = function() {
-      console.log('login: notice');
+      console.debug('login: notice');
     };
 
     LoginService.login(data).then(ok, err, not);
@@ -31,16 +31,16 @@ var loginController = function($state, LoginService, UserFactory) {
       password: this.password
     };
     var ok = function(data) {
-      console.log('signup: accept', data);
+      console.debug('signup: accept', data);
       $state.go('login');
     };
 
     var err = function() {
-      console.log('signup: error');
+      console.debug('signup: error');
     };
 
     var not = function() {
-      console.log('signup: notice');
+      console.debug('signup: notice');
     };
 
     LoginService.signup(data).then(ok, err, not);
