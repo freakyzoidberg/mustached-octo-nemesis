@@ -76,7 +76,7 @@ module.exports.connections = {
     // database: 'your_mongo_db_name_here'
   },
 
-  mongoProd: {
+  mongoProdServer: {
     adapter: 'sails-mongo',
     host: process.env.MONGODB_HOST,
     port: process.env.MONGODB_PORT,
