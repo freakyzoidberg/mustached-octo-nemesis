@@ -25,25 +25,46 @@
     ;
   };
 
-  var backendsCreateCtrl = function($state, BackendsService) {
-
-    this.save = function() {
-      var that = this;
-      var ok = function(data) {
-        console.log('backends create: ok', data);
-        BackendsService.notifyObservers();
-        that.data = null;
+  var backendsFormCtrl = function($state, $stateParams, BackendsService) {
+    var that = this;
+    console.log($stateParams.id);
+    if ($stateParams.id) {
+      var ok = function(resp) {
+        console.log('backends getOne: ok', resp.data);
+        that.data = resp.data;
       };
 
       var err = function() {
-        console.log('backends create: error');
+        console.log('backends getOne: error');
       };
 
       var not = function() {
-        console.log('backends create: notice');
+        console.log('backends getOne: notice');
+      };
+      BackendsService.get($stateParams.id).then(ok, err, not);
+    }
+
+
+    this.save = function() {
+      var ok = function(data) {
+        console.log('backends form: ok', data);
+        BackendsService.notifyObservers();
+        if (!$stateParams.id)
+          that.data = null;
       };
 
-      BackendsService.create(this.data).then(ok, err, not);
+      var err = function() {
+        console.log('backends form: error');
+      };
+
+      var not = function() {
+        console.log('backends form: notice');
+      };
+      if ($stateParams.id) {
+        BackendsService.update(that.data).then(ok, err, not);
+      } else {
+        BackendsService.create(that.data).then(ok, err, not);
+      }
     };
   };
 
@@ -63,9 +84,16 @@
     })
     .state('root.backends.create', {
       url: '/backends/create',
-      template: JST['assets/js/modules/backends/create.html'](),
-      controller: 'BackendsCreateCtrl',
-      controllerAs: 'backendsCreate',
+      template: JST['assets/js/modules/backends/form.html'](),
+      controller: 'BackendsFormCtrl',
+      controllerAs: 'backendsForm',
+      authenticate: true
+    })
+    .state('root.backends.edit', {
+      url: '/backends/edit/:id',
+      template: JST['assets/js/modules/backends/form.html'](),
+      controller: 'BackendsFormCtrl',
+      controllerAs: 'backendsForm',
       authenticate: true
     });
   }])
@@ -74,10 +102,11 @@
   'BackendsService',
   backendsCtrl
   ])
-  .controller('BackendsCreateCtrl', [
+  .controller('BackendsFormCtrl', [
   '$state',
+  '$stateParams',
   'BackendsService',
-  backendsCreateCtrl
+  backendsFormCtrl
   ]);
 
 })();

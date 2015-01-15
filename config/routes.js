@@ -51,11 +51,19 @@ module.exports.routes = {
   },
 
 
-  'GET /backend' : {
+  'GET /backend$' : {
     controller : 'backend',
     action: 'findAll'
   },
-  'POST /backend' : {
+  'GET /backend/:id$' : {
+    controller : 'backend',
+    action: 'find'
+  },
+  'PUT /backend/:id$' : {
+    controller : 'backend',
+    action: 'update'
+  },
+  'POST /backend$' : {
     controller : 'backend',
     action: 'create'
   },

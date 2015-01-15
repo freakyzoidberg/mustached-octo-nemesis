@@ -1,0 +1,22 @@
+<section class="scrollable wrapper">
+  <div class="tab-content">
+    <section class="tab-pane active" id="basic">
+      <div class="row">
+        <div class="col-sm-6">
+          <section class="panel">
+            <header class="panel-heading font-bold">Basic form</header>
+            <div class="panel-body">
+              <form role="form">
+                <div class="form-group">
+                  <label>Host address</label>
+                  <input type="text" class="form-control" placeholder="Enter host address" ng-model="backendsForm.data.host">
+                </div>
+                <button type="submit" class="btn btn-sm btn-default" ng-click="backendsForm.save()">Submit</button>
+              </form>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
