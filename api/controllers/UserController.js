@@ -58,7 +58,7 @@ module.exports = {
       if (err) {
         res.notAcceptable(err);
       } else {
-        res.ok({user: user, token: sailsAuthToken.issueToken({sid: user.id})})
+        res.ok({user: user, token: sailsAuthToken.issueToken({sid: user.id})});
       }
     });
   }

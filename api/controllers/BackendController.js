@@ -7,7 +7,7 @@
 
 module.exports = {
 findAll : function(req, res) {
-    Backend.find().exec(function(err, backends) {
+    Backend.find({ user : req.token.sid }).exec(function(err, backends) {
       if (!backends) {
         return res.notAcceptable({err: 'User does not exists'});
       }
@@ -17,7 +17,11 @@ findAll : function(req, res) {
     });
   },
 create : function(req, res) {
-  Backend.create(req.params.all()).exec(function(err, backend) {
+  var backend = {
+    'host' : req.param('host'),
+    'user' : req.token.sid
+  };
+  Backend.create(backend).exec(function(err, backend) {
     if (err) {
       res.notAcceptable(err);
     } else {

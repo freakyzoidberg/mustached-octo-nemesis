@@ -59,8 +59,6 @@
     .state('root.backends.main', {
       url: '/backends',
       template: JST['assets/js/modules/backends/main.html'](),
-      controller: 'BackendsCreateCtrl',
-      controllerAs: 'backendsCreate',
       authenticate: true
     })
     .state('root.backends.create', {
