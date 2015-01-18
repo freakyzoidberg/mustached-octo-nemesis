@@ -59,6 +59,6 @@
     "mocha": "~2.1.0",
     "requirejs": "~2.1.15",
     "sails-memory": "~0.10.3",
-    "supertest": "^~.0.15"
+    "supertest": "^0.15.0"
   }
 }
