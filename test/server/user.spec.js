@@ -1,55 +1,77 @@
-var should = require('chai').should();
+var request = require('supertest');
+var chai = require('chai');
+
+chai.should();
 
 describe('UsersModel', function() {
 
-  describe('#find()', function() {
-    it('should check find function', function(done) {
-      User.find()
-      .then(function(results) {
-        // some tests
-        done();
-      })
-      .catch(done);
-    });
-  });
+  describe('user API', function(){
 
-  describe('Password', function() {
-    it('password at least 6 char long', function(done) {
-      User.create({
-        "email": "test@test.com",
-        "password": "12345"
-      })
-      .exec(function(err, user) {
-        should.exist(err);
-        "minLength".should.equal(err.invalidAttributes.password[0].rule);
-        done();
-      })
+    var url = "http://localhost:1337/";
+    before(function(done){
+      done();
     });
-    it('password is hashed', function(done) {
-      User.create({
-        "email": "test@test.com",
-        "password": "123456"
-      })
-      .exec(function(err, user) {
-        should.not.exist(err);
-        user.password.should.not.equal("123456");
+    it("Start with 0 users", function(done){
+      User.find().exec(function(err, users){
+        if (err) throw err;
+        users.length.should.equal(0);
         done();
-      })
+      });
     });
-    it('Users are unique by email', function(done) {
-      User.create({
-        "email": "test@test.com",
-        "password": "dummydumy"
-      })
-      .exec(function(err, user) {
-        should.not.exist(user);
-        should.exist(err);
-        "unique".should.equal(err.invalidAttributes.email[0].rule);
-        User.find().exec(function(err, users) {
+    it("Signup with missing fields", function(done){
+      var email = {
+        'email': 'sample@email.com'
+        };
+      request(url)
+      .post('user/signup')
+      .send(email)
+      .expect(406, function(err, data) {
+        if (err) throw err;
+        data.body.should.not.include.key('token');
+        User.find().exec(function(err, users){
+          if (err) done(err);
+          users.length.should.equal(0);
+          done();
+        });
+      });
+    });
+    it("Signup with small password", function(done){
+      var email = {
+        'email': 'sample@email.com',
+        'password': '12345'
+        };
+      //Calling rest api with email as a part of req body
+      request(url)
+      .post('user/signup')
+      .send(email)
+      .expect(406, function(err, data) {
+        if (err) throw err;
+        data.body.should.not.include.key('token');
+        User.find().exec(function(err, users){
+          if (err) throw err;
+          users.length.should.equal(0);
+          done();
+        });
+      });
+    });
+    it("Signup with small password", function(done){
+      var email = {
+        'email': 'sample@email.com',
+        'password': '12345678'
+      };
+      //Calling rest api with email as a part of req body
+      request(url)
+      .post('user/signup')
+      .send(email)
+      .expect(200, function(err, data) {
+        if (err) throw err;
+        data.body.should.include.key('token');
+        User.find().exec(function(err, users){
+          if (err) throw err;
           users.length.should.equal(1);
           done();
         });
-      })
+      });
     });
   });
 });
