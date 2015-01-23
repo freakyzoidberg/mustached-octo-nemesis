@@ -73,5 +73,24 @@ describe('UsersModel', function() {
         });
       });
     });
+    it("no double Signup with same email", function(done){
+      var email = {
+        'email': 'sample@email.com',
+        'password': '12345678'
+      };
+      //Calling rest api with email as a part of req body
+      request(url)
+      .post('user/signup')
+      .send(email)
+      .expect(406, function(err, data) {
+        if (err) throw err;
+        data.body.should.include.key('error');
+        User.find().exec(function(err, users){
+          if (err) throw err;
+          users.length.should.equal(1);
+          done();
+        });
+      });
+    });
   });
 });
