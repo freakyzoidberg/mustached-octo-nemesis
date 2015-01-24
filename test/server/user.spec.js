@@ -9,7 +9,10 @@ describe('UsersModel', function() {
 
     var url = "http://localhost:1337/";
     before(function(done){
-      done();
+      User.destroy().exec(function(err, users) {
+        if (err) throw err;
+        done();
+      });
     });
     it("Start with 0 users", function(done){
       User.find().exec(function(err, users){
