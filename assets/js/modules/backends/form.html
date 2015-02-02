@@ -8,6 +8,10 @@
             <div class="panel-body">
               <form role="form">
                 <div class="form-group">
+                  <label>DB Type {{backendsForm.data.type}}</label>
+                  <select class="form-control" ng-model="backendsForm.data.type" ng-options="type.norm as type.name for type in backendsForm.types"></select>
+                </div>
+                <div class="form-group">
                   <label>Host address</label>
                   <input type="text" class="form-control" placeholder="Enter host address" ng-model="backendsForm.data.host">
                 </div>

@@ -19,6 +19,7 @@
       return $http.post(ApiInfo.url + '/backend', data);
     };
     this.update = function(data) {
+      console.log(data);
       return $http.put(ApiInfo.url + '/backend/' + data.id , data);
     };
     this.get = function(id) {

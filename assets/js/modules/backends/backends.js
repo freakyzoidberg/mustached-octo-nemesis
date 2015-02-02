@@ -27,6 +27,20 @@
 
   var backendsFormCtrl = function($state, $stateParams, BackendsService) {
     var that = this;
+    this.types = [
+      {
+        norm: "postgresql",
+        name: "PostgreSQL"
+      },
+      {
+        norm: "mongodb",
+        name: "MongoDB"
+      },
+      {
+        norm: "postgresq2l",
+        name: "PostgreSQ2L"
+      },
+    ];
     if ($stateParams.id) {
       var ok = function(resp) {
         console.debug('backends getOne: ok', resp.data.backend);
@@ -60,6 +74,7 @@
         console.debug('backends form: notice');
       };
       if ($stateParams.id) {
+        console.log(that.data);
         BackendsService.update(that.data).then(ok, err, not);
       } else {
         BackendsService.create(that.data).then(ok, err, not);

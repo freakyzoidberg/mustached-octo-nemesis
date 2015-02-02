@@ -41,6 +41,7 @@ module.exports = {
         return res.notAcceptable({err: 'Backend does not exists' + req.id});
       }
       backend.host = req.param('host');
+      backend.type = req.param('type');
       backend.save(function(err, backend) {
         if (err) {
           return res.notAcceptable({err: 'Backend not updated'});
@@ -54,6 +55,7 @@ module.exports = {
   create : function(req, res) {
     var backend = {
       'host' : req.param('host'),
+      'type' : req.param('type'),
       'user' : req.token.sid
     };
     Backend.create(backend).exec(function(err, backend) {

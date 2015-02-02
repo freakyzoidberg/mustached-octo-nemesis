@@ -8,6 +8,12 @@
 module.exports = {
   schema: true,
   attributes: {
+    type: {
+      type: 'string',
+      enum: ['postgresql', 'mongodb'],
+      required: true
+    },
+
     host: {
       type: 'string',
       required: true
