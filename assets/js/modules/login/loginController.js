@@ -15,7 +15,7 @@ var loginController = function($state, LoginService, UserFactory) {
     };
 
     var err = function(err) {
-      toastr.error('Login error', 'Invalid login or password')
+      toastr.error('Login error', 'Invalid login or password');
       console.debug('login: error');
     };
 

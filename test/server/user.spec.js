@@ -57,7 +57,7 @@ describe('UsersModel', function() {
         });
       });
     });
-    it("Signup with small password", function(done){
+    it("Signup correctly", function(done){
       var email = {
         'email': 'sample@email.com',
         'password': '12345678'

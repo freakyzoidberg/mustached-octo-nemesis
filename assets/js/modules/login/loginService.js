@@ -8,10 +8,10 @@ var loginService = function($q, $http, ApiInfo) {
   };
   this.signup = function(data) {
     return $http.post(ApiInfo.url + '/user/signup', data);
-  }
+  };
   this.me = function() {
     return $http.get(ApiInfo.url + '/user/me');
-  }
+  };
 };
 
 angular
