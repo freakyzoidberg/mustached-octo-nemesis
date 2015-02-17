@@ -5,6 +5,8 @@ angular
   .module('mustachedOctoNemesis', [
     'ui.router',
     'ui.gravatar',
+    'ngMaterial',
+    'ngMdIcons',
     'LocalStorageModule',
     'login',
     'front',
@@ -35,7 +37,8 @@ angular
     'localStorageServiceProvider',
     '$httpProvider',
     'gravatarServiceProvider',
-    function($urlRouterProvider, localStorageServiceProvider, $httpProvider, gravatarServiceProvider) {
+    '$mdThemingProvider',
+    function($urlRouterProvider, localStorageServiceProvider, $httpProvider, gravatarServiceProvider, $mdThemingProvider) {
       $urlRouterProvider.otherwise('/');
       localStorageServiceProvider.setPrefix('mustached');
       $httpProvider.interceptors.push('AuthInterceptor');
@@ -44,6 +47,13 @@ angular
         "default": 'retro'  // Mystery man as default for missing avatars
       };
       gravatarServiceProvider.secure = true;
+      $mdThemingProvider.theme('default')
+        .primaryPalette('teal')
+        .accentPalette('amber')
+        .warnPalette('pink');
+
+        //Available palettes: red, pink, purple, deep-purple, indigo, blue, light-blue, cyan, teal, green, light-green, lime, yellow, amber, orange, deep-orange, brown, grey, blue-grey
+        //theme.primaryPalette, theme.accentPalette, theme.warnPalette, theme.backgroundPalette
     }
   ])
   .run([
@@ -74,6 +84,9 @@ angular
             }
           }
         }
+      });
+      $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams){
+        $rootScope.state = toState.name;
       });
     }
   ]);

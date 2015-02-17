@@ -1,31 +1,23 @@
-<section id="content" class="m-t-lg wrapper-md animated fadeInUp">
-  <div class="row m-n">
-    <div class="col-md-4 col-md-offset-4 m-t-lg">
-      <section class="panel">
-        <header class="panel-heading text-center">
-          Sign in
-        </header>
-        <form ng-submit="login.userLogin()" class="panel-body">
-          <div class="form-group">
-            <label class="control-label">Email</label>
-            <input type="email" placeholder="test@example.com" class="form-control" ng-model="login.email">
-          </div>
-          <div class="form-group">
-            <label class="control-label">Password</label>
-            <input type="password" id="inputPassword" placeholder="Password" class="form-control" ng-model="login.password">
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox"> Keep me logged in
-            </label>
-          </div>
-          <a href="#" class="pull-right m-t-xs"><small>Forgot password?</small></a>
-          <button type="submit" class="btn btn-info">Sign in</button>
-          <div class="line line-dashed"></div>
-          <p class="text-muted text-center"><small>Do not have an account?</small></p>
-          <a href="#/signup" class="btn btn-white btn-block">Create an account</a>
-        </form>
+<md-card flex>
+  <md-toolbar>
+    <h2 class="md-toolbar-tools">
+      <span>Login</span>
+    </h2>
+  </md-toolbar>
+  <md-card-content>
+    <form ng-submit="login.userLogin()">
+      <md-input-container flex>
+          <label>Email</label>
+          <input ng-model="login.email" type="email" required>
+        </md-input-container>
+      <md-input-container flex>
+        <label>password</label>
+        <input type="password" ng-model="login.password" required>
+      </md-input-container>
+      <section layout="col" layout-align="end center">
+        <md-button class="md-raised md-primary">Login</md-button>
       </section>
-    </div>
-  </div>
-</section>
+    </form>
+  </md-card-content>
+</md-card>
+<md-button ng-href="#/signup" md-no-ink class="md-accent">Or create an account</md-button>

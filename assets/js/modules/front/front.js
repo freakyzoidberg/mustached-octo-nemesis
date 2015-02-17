@@ -3,7 +3,7 @@
 
   var frontCtrl = function($state, $rootScope) {
     $rootScope.$on("logged-in", function() {
-      $state.transitionTo("root.dashboard");
+      $state.transitionTo("in.dashboard");
     });
   };
 
@@ -11,7 +11,7 @@
   .module('front', [])
   .config(['$stateProvider', function($stateProvider) {
     $stateProvider
-    .state('front', {
+    .state('out.front', {
       url: '/',
       template: JST['assets/js/modules/front/front.html'](),
       controller: 'FrontCtrl',

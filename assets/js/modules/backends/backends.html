@@ -1,27 +1,22 @@
-<section class="hbox stretch">
-  <!-- .aside -->
-  <aside class="aside aside-lg b-r">
-    <section class="vbox">
-      <header class="header text-center">
-        <p class="h4">Backends</p>
-      </header>
-      <section class="wrapper">
-        <div class="text-center clearfix">
-          <a href="#/backends/create" class="btn btn-success m-b-lg"><i class="fa fa-plus"></i> Create backend</a>
-        </div>
-        <ul>
-        <li ng-repeat="backend in backends.backends">
-          <span><a ng-href="#/backends/edit/{{backend.id}}">{{backend.host}}</a></span>
-        </li>
-        </ul>
-      </section>
-    </section>
-  </aside>
-  <!-- /.aside -->
-  <!-- .aside -->
-  <aside class="">
-    <section class="vbox" ui-view>
-    </section>
-  </aside>
-  <!-- /.aside -->
-</section>
+<md-list>
+  <md-item ng-repeat="backend in backends.backends">
+    <md-item-content>
+      <div class="md-tile-left">
+          <img ng-src="{{item.face}}" class="face" alt="{{backend.type}}">
+      </div>
+      <div class="md-tile-content">
+        <h3 ui-sref=".edit({id: backend.id})">{{backend.type}}</h3>
+        <p>
+          {{backend.host}}
+        </p>
+      </div>
+    </md-item-content>
+  </md-item>
+</md-list>
+
+<md-button class="md-fab md-br-button" aria-label="Create backend" ui-sref=".create" ng-show="state == 'in.backends'">
+  <ng-md-icon icon="add" size="100%"></ng-md-icon>
+</md-button>
+
+<md-bottom-sheet  ui-view ng-show="state != 'in.backends'">
+</md-bottom-sheet>

@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  var backendsCtrl = function($state, BackendsService) {
+  var backendsCtrl = function($rootScope, $state, BackendsService) {
     var that = this;
     var ok = function(resp) {
       console.debug('backends getAll: ok', resp.data);
@@ -25,7 +25,7 @@
     ;
   };
 
-  var backendsFormCtrl = function($state, $stateParams, BackendsService) {
+  var backendsFormCtrl = function($rootScope, $state, $stateParams, BackendsService) {
     var that = this;
     this.types = [
       {
@@ -35,11 +35,7 @@
       {
         norm: "mongodb",
         name: "MongoDB"
-      },
-      {
-        norm: "postgresq2l",
-        name: "PostgreSQ2L"
-      },
+      }
     ];
     if ($stateParams.id) {
       var ok = function(resp) {
@@ -64,6 +60,7 @@
         BackendsService.notifyObservers();
         if (!$stateParams.id)
           that.data = null;
+          $state.go("in.backends");
       };
 
       var err = function() {
@@ -86,24 +83,20 @@
   .module('backends', [])
   .config(['$stateProvider', function($stateProvider) {
     $stateProvider
-    .state('root.backends', {
+    .state('in.backends', {
+      url: '/backends',
       template: JST['assets/js/modules/backends/backends.html'](),
       controller: 'BackendsCtrl',
       controllerAs: 'backends',
     })
-    .state('root.backends.main', {
-      url: '/backends',
-      template: JST['assets/js/modules/backends/main.html'](),
-      authenticate: true
-    })
-    .state('root.backends.create', {
+    .state('in.backends.create', {
       url: '/backends/create',
       template: JST['assets/js/modules/backends/form.html'](),
       controller: 'BackendsFormCtrl',
       controllerAs: 'backendsForm',
       authenticate: true
     })
-    .state('root.backends.edit', {
+    .state('in.backends.edit', {
       url: '/backends/edit/:id',
       template: JST['assets/js/modules/backends/form.html'](),
       controller: 'BackendsFormCtrl',
@@ -112,11 +105,13 @@
     });
   }])
   .controller('BackendsCtrl', [
+  '$rootScope',
   '$state',
   'BackendsService',
   backendsCtrl
   ])
   .controller('BackendsFormCtrl', [
+  '$rootScope',
   '$state',
   '$stateParams',
   'BackendsService',

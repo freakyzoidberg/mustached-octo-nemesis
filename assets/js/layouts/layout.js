@@ -5,9 +5,11 @@
   .module('mustachedOctoNemesis')
   .config(['$stateProvider', function($stateProvider) {
     $stateProvider
-    .state('root',{
-      template: JST['assets/js/layouts/root.html']()
+    .state('in',{
+      template: JST['assets/js/layouts/in.html']()
+    })
+    .state('out',{
+      template: JST['assets/js/layouts/out.html']()
     });
   }]);
-
 }());

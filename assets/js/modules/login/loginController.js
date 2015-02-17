@@ -11,7 +11,7 @@ var loginController = function($state, LoginService, UserFactory) {
     var ok = function(resp) {
       UserFactory.setUser(resp.data.user);
       UserFactory.setToken(resp.data.token);
-      $state.go('root.dashboard');
+      $state.go('in.dashboard');
     };
 
     var err = function(err) {
@@ -51,14 +51,14 @@ angular
   .module('login', [])
   .config(['$stateProvider', function($stateProvider) {
     $stateProvider
-      .state('login', {
+      .state('out.login', {
         url: '/login',
         template: JST['assets/js/modules/login/login.html'](),
         controller: 'LoginController',
         controllerAs: 'login',
         authenticate: false
       })
-      .state('signup', {
+      .state('out.signup', {
         url: '/signup',
         template: JST['assets/js/modules/login/signup.html'](),
         controller: 'LoginController',
