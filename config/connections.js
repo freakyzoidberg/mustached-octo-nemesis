@@ -77,13 +77,12 @@ module.exports.connections = {
   // },
 
   mongoProdServer: {
-    adapter: 'sails-memory'
-    // adapter: 'sails-mongo',
-    // host: process.env.MONGODB_HOST || 'noenv',
-    // port: process.env.MONGODB_PORT,
-    // user: process.env.MONGODB_USER,
-    // password: process.env.MONGODB_PASSWORD,
-    // database: process.env.MONGODB_DATABASE
+    adapter: 'sails-mongo',
+    host: process.env.MONGODB_HOST || 'noenv',
+    port: process.env.MONGODB_PORT,
+    user: process.env.MONGODB_USER,
+    password: process.env.MONGODB_PASSWORD,
+    database: process.env.MONGODB_DATABASE
   },
 
 
