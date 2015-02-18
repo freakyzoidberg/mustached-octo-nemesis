@@ -37,7 +37,7 @@
   </head>
 
   <body ng-app="mustachedOctoNemesis">
-    <div ui-view>
+    <div ui-view layout="column" layout-fill>
     </div>
     <%- body %>
     <% if (typeof global.newrelic !== 'undefined') { %>

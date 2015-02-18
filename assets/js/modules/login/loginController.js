@@ -32,7 +32,7 @@ var loginController = function($state, LoginService, UserFactory) {
     };
     var ok = function(data) {
       console.debug('signup: accept', data);
-      $state.go('login');
+      $state.go('out.login');
     };
 
     var err = function() {
