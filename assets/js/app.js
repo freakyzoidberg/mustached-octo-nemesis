@@ -73,13 +73,13 @@ angular
               $rootScope.$broadcast("logged-in");
             }, function() {
               if (toState.authenticate) {
-                $state.transitionTo("login");
+                $state.transitionTo("out.front");
                 e.preventDefault();
               }
             });
           } else {
             if (toState.authenticate) {
-              $state.transitionTo("login");
+              $state.transitionTo("out.front");
               e.preventDefault();
             }
           }
