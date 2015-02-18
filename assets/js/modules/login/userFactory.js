@@ -11,7 +11,7 @@
 
     return {
       setUser : function(u) {
-        console.debug('setting user: ', u)
+        console.debug('setting user: ', u);
         user.email = u.email;
         user.id = u.id;
       },

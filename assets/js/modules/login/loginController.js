@@ -64,7 +64,7 @@ angular
         controller: 'LoginController',
         controllerAs: 'signup',
         authenticate: false
-      })
+      });
   }])
   .controller('LoginController', [
     '$state',

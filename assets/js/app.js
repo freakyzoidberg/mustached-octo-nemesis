@@ -30,7 +30,7 @@ angular
         }
         return $q.reject(response);
       }
-    }
+    };
   }])
   .config([
     '$urlRouterProvider',
@@ -65,7 +65,7 @@ angular
     function ($rootScope, $state, $http, UserFactory, LoginService) {
       $rootScope.userData = UserFactory.currentUser();
       $rootScope.$on("$stateChangeStart", function(e, toState, toParams, fromState, fromParams) {
-        if (UserFactory.currentUser().id == null) {
+        if (UserFactory.currentUser().id === null) {
           if (UserFactory.currentToken()) {
             console.debug("we have a token we could attempt to fill the user here");
             LoginService.me().then(function(resp) {

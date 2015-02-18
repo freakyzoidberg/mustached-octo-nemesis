@@ -18,11 +18,10 @@
 
     var getBackends = function() {
       BackendsService.getAll().then(ok, err, not);
-    }
+    };
 
     BackendsService.registerObserverCallback(getBackends);
     getBackends();
-    ;
   };
 
   var backendsFormCtrl = function($rootScope, $state, $stateParams, BackendsService) {

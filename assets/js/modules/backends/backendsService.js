@@ -24,10 +24,10 @@
     };
     this.get = function(id) {
       return $http.get(ApiInfo.url + '/backend/'+ id );
-    }
+    };
     this.getAll = function() {
       return $http.get(ApiInfo.url + '/backend');
-    }
+    };
   };
 
   angular
