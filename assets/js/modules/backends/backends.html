@@ -14,9 +14,17 @@
   </md-item>
 </md-list>
 
-<md-button class="md-fab md-br-button" aria-label="Create backend" ui-sref=".create" ng-show="state == 'in.backends'">
+<!-- <md-button class="md-fab md-br-button" aria-label="Create backend" ui-sref=".create" ng-show="state == 'in.backends'">
   <ng-md-icon icon="add" size="100%"></ng-md-icon>
-</md-button>
+</md-button> -->
 
-<md-bottom-sheet  ui-view ng-show="state != 'in.backends'">
-</md-bottom-sheet>
+<div ui-view flex>
+  <section layout="row" layout-sm="column" layout-align="end center">
+  <md-button class="md-fab md-br-button" aria-label="Create backend" ui-sref=".create">
+    <ng-md-icon icon="add" size="100%"></ng-md-icon>
+  </md-button>
+</section>
+</div>
+
+<!-- <md-bottom-sheet  ui-view ng-show="state != 'in.backends'">
+</md-bottom-sheet> -->
