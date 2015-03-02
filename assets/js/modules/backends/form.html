@@ -4,20 +4,27 @@
       <div class="row">
         <div class="col-sm-6">
           <section class="panel">
-            <header class="panel-heading font-bold">Basic form</header>
+            <header class="panel-heading font-bold">Add new Backend</header>
             <div class="panel-body">
-              <form role="form">
-                <div class="form-group">
-                  <label>DB Type {{backendsForm.data.type}}</label>
-                  <select class="form-control" ng-model="backendsForm.data.type" ng-options="type.norm as type.name for type in backendsForm.types"></select>
+              <section layout="column" layout-sm="column" layout-align="begin center">
+              <md-input-container>
+                <label>Host address</label>
+                <input ng-model="backendsForm.data.host" type="text">
+              </md-input-container>
+              <div>
+                <label>DB Type</label>
+                <div>
+                  <md-select layout-fill ng-model="backendsForm.data.type" label="name" placeholder="Select a DB type">
+                    <md-select-label>{{ backendsForm.data.type||"select" }}</md-select-label>
+                    <md-option ng-value="opt.norm" ng-repeat="opt in backendsForm.types">{{ opt.name }}</md-option>
+                  </md-select>
                 </div>
-                <div class="form-group">
-                  <label>Host address</label>
-                  <input type="text" class="form-control" placeholder="Enter host address" ng-model="backendsForm.data.host">
-                </div>
-                <button type="submit" class="btn btn-sm btn-default" ng-click="backendsForm.save()">Submit</button>
-                <a  ui-sref="in.backends">cancel</a>
-              </form>
+              </div>
+              </section>
+              <section layout="row" layout-sm="column" layout-align="end end">
+                <md-button md-no-ink class="md-primary" ng-click="backendsForm.save()">Save</md-button>
+                <md-button class="md-warn" ui-sref="in.backends">Cancel</md-button>
+              </section>
             </div>
           </section>
         </div>

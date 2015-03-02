@@ -1,8 +1,25 @@
 (function(){
   'use strict';
-
+  var TYPES = [
+    {
+      norm: "postgresql",
+      name: "PostgreSQL",
+      icon: 'dbs-postgresql'
+    },
+    {
+      norm: "mongodb",
+      name: "MongoDB",
+      icon: 'dbs-mongodb'
+    }
+  ];
   var backendsCtrl = function($rootScope, $state, BackendsService) {
     var that = this;
+    this.icon = function(backend) {
+      console.log();
+      return TYPES.filter(function ( obj ) {
+        return obj.norm === backend.type;
+      })[0].icon;
+    };
     var ok = function(resp) {
       console.debug('backends getAll: ok', resp.data);
       that.backends = resp.data.backends;
@@ -26,16 +43,7 @@
 
   var backendsFormCtrl = function($rootScope, $state, $stateParams, BackendsService) {
     var that = this;
-    this.types = [
-      {
-        norm: "postgresql",
-        name: "PostgreSQL"
-      },
-      {
-        norm: "mongodb",
-        name: "MongoDB"
-      }
-    ];
+    this.types = TYPES;
     if ($stateParams.id) {
       var ok = function(resp) {
         console.debug('backends getOne: ok', resp.data.backend);

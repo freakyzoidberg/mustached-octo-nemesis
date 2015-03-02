@@ -2,7 +2,7 @@
   <md-item ng-repeat="backend in backends.backends">
     <md-item-content>
       <div class="md-tile-left">
-          <img ng-src="{{item.face}}" class="face" alt="{{backend.type}}">
+        <span ng-class="'icon-' + backends.icon(backend)" style="font-size:42px;"></span>
       </div>
       <div class="md-tile-content">
         <h3 ui-sref=".edit({id: backend.id})">{{backend.type}}</h3>
@@ -19,7 +19,7 @@
 </md-button> -->
 
 <div ui-view flex>
-  <section layout="row" layout-sm="column" layout-align="end center">
+  <section layout="row" layout-align="end center">
   <md-button class="md-fab md-br-button" aria-label="Create backend" ui-sref=".create">
     <ng-md-icon icon="add" size="100%"></ng-md-icon>
   </md-button>
